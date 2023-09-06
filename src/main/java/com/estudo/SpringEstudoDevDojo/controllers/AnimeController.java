@@ -41,4 +41,16 @@ public class AnimeController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(anime.getId()).toUri();
         return ResponseEntity.created(uri).body(id);*/
     }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<Anime> update(@PathVariable Long id, @RequestBody Anime anime){
+        animeService.update(id, anime);
+        return ResponseEntity.ok().body(anime);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        animeService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
