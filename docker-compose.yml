@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  db:
+    image: postgres
+    container_name: contr_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_TCP_PORT: 5433
+    ports:
+      - "5433:5432"
+    volumes:
+      - devdojo_data_db:/var/lib/postgresql/data
+
+volumes:
+  devdojo_data_db:
